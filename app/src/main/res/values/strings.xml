@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MobileAppsCW</string>
+    <string name="home">home</string>
+    <string name="time">12:35:14</string>
+    <string name="remaining_time">remaining until next question</string>
+    <string name="example_question">how many cows could fit on the moon?</string>
+    <string name="settings">settings</string>
+    <string name="userPFP">this is your profile picture</string>
 </resources>
