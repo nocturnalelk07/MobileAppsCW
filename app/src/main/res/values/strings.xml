@@ -1,10 +1,16 @@
 <resources>
+    <!-- home screen strings -->
     <string name="app_name">MobileAppsCW</string>
-    <string name="home">home</string>
+    <string name="home">Home</string>
     <string name="time">12:35:14</string>
-    <string name="remaining_time">remaining until next question</string>
+    <string name="remaining_time">Remaining until next question</string>
     <string name="example_question">IN WHAT YEAR DID ROOSEVELT BECOME PRESIDENT?</string>
-    <string name="settings">settings</string>
+    <string name="settings">SETTINGS</string>
     <string name="userPFP">this is your profile picture</string>
-    <string name="left_off">here was your previous question</string>
+    <string name="left_off">Here was your previous question</string>
+
+
+    <!-- login screen strings -->
+    <string name="login">Please Log In</string>
+    <string name="log_in_here">If you have an account, log in here: </string>
 </resources>
