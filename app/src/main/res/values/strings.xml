@@ -7,7 +7,7 @@
     <string name="example_question">IN WHAT YEAR DID ROOSEVELT BECOME PRESIDENT?</string>
     <string name="settings">SETTINGS</string>
     <string name="userPFP">this is your profile picture</string>
-    <string name="left_off">Here was your previous question</string>
+    <string name="left_off">Here is your previous question</string>
 
 
     <!-- login screen strings -->
@@ -21,4 +21,15 @@
     <string name="checkbox_stay_signed_in">Remember me?</string>
     <string name="create_account_here">otherwise, please create an account here: </string>
     <string name="create_account_button">CREATE ACCOUNT</string>
+    <string name="two_factor_auth_button">TWO FACTOR AUTHENTICATION</string>
+
+
+    <!-- account screen strings -->
+    <string name="account">Account</string>
+    <string name="add_friend">Add a friend: </string>
+    <string name="edit">EDIT</string>
+    <string name="security_settings">Security settings: </string>
+    <string name="example_email">email@example.com</string>
+    <string name="manage_email_password_button">MANAGE YOUR EMAIL AND PASSWORD</string>
+    <string name="delete_button">DELETE</string>
 </resources>
