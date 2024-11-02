@@ -11,6 +11,14 @@
 
 
     <!-- login screen strings -->
-    <string name="login">Please Log In</string>
-    <string name="log_in_here">If you have an account, log in here: </string>
+    <string name="login">Please Sign In</string>
+    <string name="log_in_here">If you have an account, Sign in here: </string>
+    <string name="username_here">Username: </string>
+    <string name="password_here">Password: </string>
+    <string name="confirm_password">Confirm Password: </string>
+    <string name="email_here">Email: </string>
+    <string name="log_in_button">SIGN IN</string>
+    <string name="checkbox_stay_signed_in">Remember me?</string>
+    <string name="create_account_here">otherwise, please create an account here: </string>
+    <string name="create_account_button">CREATE ACCOUNT</string>
 </resources>
