@@ -22,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AccountScreen" />
+        <activity android:name=".FriendProfileScreen" />
+        <activity android:name=".HomeScreen" />
+        <activity android:name=".LoginScreen" />
+        <activity android:name=".QuizScreen" />
+        <activity android:name=".SettingsScreen" />
     </application>
 
 </manifest>

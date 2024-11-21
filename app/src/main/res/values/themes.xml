@@ -18,6 +18,9 @@
         <item name="colorOnError">@color/white</item>
         <item name="colorOnSurface">@color/lightGrey</item>
 
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:navigationBarColor">?attr/colorPrimary</item>
+
         <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2</item>
         <item name="textAppearanceHeadline3">@style/TextAppearance.MaterialComponents.Headline3</item>

@@ -22,7 +22,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="50dp"
             android:text="@string/account"
-            android:textColor="@color/lightGrey"
+            android:textColor="?attr/colorOnBackground"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
