@@ -5,8 +5,7 @@
     <string name="time">12:35:14</string>
     <string name="remaining_time">Remaining until next question</string>
     <string name="example_question">IN WHAT YEAR DID ROOSEVELT BECOME PRESIDENT?</string>
-    <string name="settings">settings</string>
-    <string name="settings_button">SETTINGS</string>
+    <string name="friends_list">Friends:</string>
     <string name="userPFP">profile picture</string>
     <string name="last_question">Here is your previous question</string>
 
@@ -36,4 +35,5 @@
 
     <!-- app bar menu -->
     <string name="log_out">log out</string>
+    <string name="settings">settings</string>
 </resources>

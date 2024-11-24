@@ -3,23 +3,23 @@
     <style name="Base.Theme.MobileAppsCW" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!-- Original AppCompat attributes. -->
-        <item name="colorPrimary">@color/teal</item>
-        <item name="colorSecondary">@color/blueGrey</item>
+        <item name="colorPrimary">@color/tealPrimary</item>
+        <item name="colorSecondary">@color/amber</item>
         <item name="android:colorBackground">@color/lightGrey</item>
         <item name="colorError">@color/red</item>
 
         <!-- New MaterialComponents attributes. -->
-        <item name="colorPrimaryVariant">@color/blueGreyDark</item>
-        <item name="colorSecondaryVariant">@color/blueGreyLight</item>
+        <item name="colorPrimaryDark">@color/tealDark</item>
+        <item name="colorPrimaryVariant">@color/tealLight</item>
         <item name="colorSurface">@color/grey</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
         <item name="colorOnSecondary">@color/black</item>
         <item name="colorOnBackground">@color/black</item>
         <item name="colorOnError">@color/white</item>
         <item name="colorOnSurface">@color/black</item>
 
-        <item name="android:statusBarColor">?attr/colorSecondary</item>
-        <item name="android:navigationBarColor">?attr/colorSecondary</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryDark</item>
 
         <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2</item>
