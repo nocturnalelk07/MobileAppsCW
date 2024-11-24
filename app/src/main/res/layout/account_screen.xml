@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/home"
+            android:id="@+id/AccountText"
             style="@style/TextAppearance.MaterialComponents.Headline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             app:layout_constraintVertical_bias="0.228" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView"
+            android:id="@+id/profileImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginEnd="10dp"
@@ -56,11 +56,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.99"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView"
+            app:layout_constraintTop_toBottomOf="@+id/profileImage"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/friendRequestInputField"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
@@ -75,6 +76,7 @@
         android:paddingEnd="5dp"/>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/securitySettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -84,6 +86,7 @@
         android:textColor="@color/lightGrey"/>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/exampleEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/example_email"
@@ -93,6 +96,7 @@
         android:layout_marginBottom="10dp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/accountSettingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/manage_email_password_button"
@@ -102,6 +106,7 @@
         android:layout_marginBottom="10dp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/twoFactorAuthButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/two_factor_auth_button"
@@ -110,6 +115,7 @@
         android:layout_marginBottom="70dp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

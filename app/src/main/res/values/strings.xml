@@ -7,7 +7,7 @@
     <string name="example_question">IN WHAT YEAR DID ROOSEVELT BECOME PRESIDENT?</string>
     <string name="settings">SETTINGS</string>
     <string name="userPFP">this is your profile picture</string>
-    <string name="left_off">Here is your previous question</string>
+    <string name="last_question">Here is your previous question</string>
 
 
     <!-- login screen strings -->

@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
@@ -17,6 +18,7 @@
         android:layout_marginBottom="50dp"/>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signInHereText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/log_in_here"
@@ -25,6 +27,7 @@
         android:layout_marginBottom="20dp"/>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/loginUsernameField"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:hint="@string/username_here"
@@ -38,6 +41,7 @@
         android:paddingEnd="5dp"/>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LoginPasswordField"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:hint="@string/password_here"
@@ -70,6 +74,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/rememberMe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="180dp"
@@ -83,6 +88,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/createAccountHereText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/create_account_here"
@@ -91,6 +97,7 @@
         android:layout_marginBottom="15dp"/>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/createEmailField"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:hint="@string/email_here"
@@ -104,6 +111,7 @@
         android:paddingEnd="5dp"/>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/createUsernameField"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:hint="@string/username_here"
@@ -117,6 +125,7 @@
         android:paddingEnd="5dp"/>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/createPasswordField"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:hint="@string/password_here"
@@ -130,6 +139,7 @@
         android:paddingEnd="5dp"/>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/confirmPasswordField"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:hint="@string/confirm_password"
@@ -143,6 +153,7 @@
         android:paddingEnd="5dp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/createAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

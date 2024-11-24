@@ -29,5 +29,4 @@
         <activity android:name=".QuizScreen" />
         <activity android:name=".SettingsScreen" />
     </application>
-
 </manifest>

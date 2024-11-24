@@ -11,10 +11,10 @@ class LoginScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_screen)
         val loginButton = findViewById<Button>(R.id.signInButton)
-        loginButton.setOnClickListener{_ -> launchHome()}
+        loginButton.setOnClickListener{_ -> logIn()}
     }
 
-    private fun launchHome() {
+    private fun logIn() {
         val homeIntent = Intent(this, HomeScreen::class.java)
         startActivity(homeIntent)
     }

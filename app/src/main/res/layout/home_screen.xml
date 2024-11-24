@@ -31,6 +31,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/profileImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginEnd="10dp"
@@ -46,6 +47,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/timeRemainingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -54,6 +56,7 @@
         android:textColor="@color/lightGrey"/>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/timeLeftTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -63,15 +66,17 @@
         android:textColor="@color/lightGrey"/>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/previousQuestionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/left_off"
+        android:text="@string/last_question"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:textColor="@color/lightGrey"/>
 
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/previousQuestionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -81,17 +86,25 @@
         android:textSize="20sp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:text="@string/settings"
         android:textSize="40sp"/>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/friendListRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="100dp"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/colorPrimary"/>
 </androidx.appcompat.widget.LinearLayoutCompat>
