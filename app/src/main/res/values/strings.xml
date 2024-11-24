@@ -5,8 +5,9 @@
     <string name="time">12:35:14</string>
     <string name="remaining_time">Remaining until next question</string>
     <string name="example_question">IN WHAT YEAR DID ROOSEVELT BECOME PRESIDENT?</string>
-    <string name="settings">SETTINGS</string>
-    <string name="userPFP">this is your profile picture</string>
+    <string name="settings">settings</string>
+    <string name="settings_button">SETTINGS</string>
+    <string name="userPFP">profile picture</string>
     <string name="last_question">Here is your previous question</string>
 
 
@@ -32,4 +33,7 @@
     <string name="example_email">email@example.com</string>
     <string name="manage_email_password_button">MANAGE YOUR EMAIL AND PASSWORD</string>
     <string name="delete_button">DELETE</string>
+
+    <!-- app bar menu -->
+    <string name="log_out">log out</string>
 </resources>
