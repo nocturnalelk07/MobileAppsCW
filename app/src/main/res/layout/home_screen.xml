@@ -77,23 +77,17 @@
         android:layout_height="wrap_content"
         android:text="@string/friends_list"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat"
+        app:layout_constraintBottom_toTopOf="@+id/friendListRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/friendListRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/navigationBar"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigationBar"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/friendListRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="110dp" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationBar"

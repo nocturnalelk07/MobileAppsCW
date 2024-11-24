@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 
 class HomeScreen : AppCompatActivity() {
@@ -16,8 +17,42 @@ class HomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_screen)
 
+        //setup toolbar
         val toolbar = findViewById<Toolbar>(R.id.homeToolbar)
         setSupportActionBar(toolbar)
+
+        //setup recycler view for friends list
+        val arrayList = populateList()
+
+        val recyclerView = findViewById<RecyclerView>(R.id.friendListRecyclerView)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = layoutManager
+
+        val adapter = MyAdapter(arrayList)
+        recyclerView.adapter = adapter
+
+    }
+
+    fun populateList(): ArrayList<MyModel> {
+        val list = ArrayList<MyModel>()
+
+        val myImageList = arrayOf(R.drawable.photo, R.drawable.photo, R.drawable.photo,
+            R.drawable.photo, R.drawable.photo, R.drawable.photo,
+            R.drawable.photo, R.drawable.photo, R.drawable.photo)
+
+        val myNameList = arrayOf("finn", "holly", "molly",
+            "trolley", "ceri", "harvey",
+            "ford", "stan", "daniel")
+
+        for (i in 0 .. 8) {
+            val imageModel = MyModel()
+            imageModel.setNames(myNameList[i])
+            imageModel.setImages(myImageList[i])
+            list.add(imageModel)
+
+        }
+        list.sortBy {list -> list.modelName}
+        return list
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
