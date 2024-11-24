@@ -1,110 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_screen_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="50dp"
-            android:text="@string/home"
-            style="@style/TextAppearance.MaterialComponents.Headline2"
-            android:textStyle="bold"
-            android:textColor="@color/lightGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.034"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/profileImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="10dp"
             android:contentDescription="@string/userPFP"
             android:scaleType="fitCenter"
             android:src="@drawable/photo"
+            android:layout_marginEnd="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.99"
-            app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/home"
+            style="@style/TextAppearance.MaterialComponents.Headline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/home"
+            android:textColor="?attr/colorOnBackground"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/timeRemainingView"
+        style="@style/TextAppearance.MaterialComponents.Headline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/time"
-        style="@style/TextAppearance.MaterialComponents.Headline3"
-        android:textColor="@color/lightGrey"/>
+        android:textColor="?attr/colorOnBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/timeLeftTextView"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/remaining_time"
-        style="@style/TextAppearance.MaterialComponents.Headline5"
-        android:layout_marginBottom="90dp"
-        android:textColor="@color/lightGrey"/>
+        android:textColor="?attr/colorOnBackground"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeRemainingView" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/previousQuestionText"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/last_question"
-        style="@style/TextAppearance.MaterialComponents.Headline5"
-        android:textColor="@color/lightGrey"/>
-
+        android:textColor="?attr/colorOnBackground"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeLeftTextView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/previousQuestionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
         android:padding="10dp"
         android:text="@string/example_question"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/previousQuestionText" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
         android:text="@string/settings"
-        android:textSize="40sp"/>
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/friendListRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/navigationBar"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/friendListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="110dp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="?attr/colorPrimary"/>
-</androidx.appcompat.widget.LinearLayoutCompat>
+        android:background="?attr/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
