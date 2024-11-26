@@ -22,36 +22,39 @@ class HomeScreen : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         //setup recycler view for friends list
-        val arrayList = populateList()
+        val listOfFriends = populateList()
 
         val recyclerView = findViewById<RecyclerView>(R.id.friendListRecyclerView)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = layoutManager
 
-        val adapter = MyAdapter(arrayList)
+        val adapter = MyAdapter(listOfFriends)
         recyclerView.adapter = adapter
 
     }
 
-    fun populateList(): ArrayList<MyModel> {
-        val list = ArrayList<MyModel>()
+    private fun populateList(): ArrayList<friend> {
+        val list = ArrayList<friend>()
 
+        //list of images for friends pfps
         val myImageList = arrayOf(R.drawable.photo, R.drawable.photo, R.drawable.photo,
             R.drawable.photo, R.drawable.photo, R.drawable.photo,
             R.drawable.photo, R.drawable.photo, R.drawable.photo)
 
+        //list of friends on friends list
         val myNameList = arrayOf("finn", "holly", "molly",
             "trolley", "ceri", "harvey",
             "ford", "stan", "daniel")
 
+        //looping through each list making a friend object
         for (i in 0 .. 8) {
-            val imageModel = MyModel()
+            val imageModel = friend()
             imageModel.setNames(myNameList[i])
             imageModel.setImages(myImageList[i])
             list.add(imageModel)
 
         }
-        list.sortBy {list -> list.modelName}
+        list.sortBy {list -> list.username}
         return list
     }
 
