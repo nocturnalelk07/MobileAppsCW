@@ -11,10 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //for now this activity will just start the login activity but this will be fixed when remember me is implemented
-        if(true) {
-            launchLoginActivity()
-        } else {
+        if(isRememberMeTrue()) {
             launchHomeActivity()
+        } else {
+            launchLoginActivity()
         }
     }
 
@@ -26,5 +26,11 @@ class MainActivity : AppCompatActivity() {
     private fun launchHomeActivity() {
         val homeIntent = Intent(this, HomeScreen::class.java)
         startActivity(homeIntent)
+    }
+
+    private fun isRememberMeTrue(): Boolean {
+        //determine if the user has stayed signed in with the remember me function
+        //TODO: the whole thing
+        return false
     }
 }

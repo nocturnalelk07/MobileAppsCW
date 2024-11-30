@@ -64,12 +64,12 @@ class HomeScreen : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val myView = findViewById<View>(R.id.homeToolbar)
+        val toolbar = findViewById<View>(R.id.homeToolbar)
         when (item.itemId) {
             //this is just an example snack bar
             R.id.profilePicture -> {
                 val snackbar =
-                    Snackbar.make(myView, "profile was pressed",0)
+                    Snackbar.make(toolbar, "profile was pressed",0)
                 snackbar.show()
                 return true
             }
