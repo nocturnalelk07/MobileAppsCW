@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/loginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:layout_gravity="center_horizontal"
+        style="@style/TextAppearance.MaterialComponents.Headline2"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnBackground"
+        android:layout_marginBottom="50dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/createEmailField"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:hint="@string/email_here"
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnBackground"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corners"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/createUsernameField"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:hint="@string/username_here"
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnBackground"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corners"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/createPasswordField"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:hint="@string/password_here"
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnBackground"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corners"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/confirmPasswordField"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:hint="@string/confirm_password"
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnBackground"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corners"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="@string/create_account_button"
+        android:textSize="30sp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

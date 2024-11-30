@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".HomeScreen" />
         <activity android:name=".LoginScreen" />
+        <activity android:name=".CreateAccountScreen" />
         <activity
             android:name=".AccountScreen"
             android:parentActivityName=".HomeScreen"/>

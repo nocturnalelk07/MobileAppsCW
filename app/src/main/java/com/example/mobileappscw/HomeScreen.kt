@@ -1,7 +1,9 @@
 package com.example.mobileappscw
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -10,8 +12,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeScreen : AppCompatActivity() {
+
+    private val sharedPreferenceName = "remember me"
+    private val logCatTag = "cwTag"
+    private val auth = FirebaseAuth.getInstance()
+    private var currentUser = auth.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +33,8 @@ class HomeScreen : AppCompatActivity() {
         val listOfFriends = populateList()
 
         val recyclerView = findViewById<RecyclerView>(R.id.friendListRecyclerView)
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,
+            false)
         recyclerView.layoutManager = layoutManager
 
         val adapter = MyAdapter(listOfFriends)
@@ -33,10 +42,30 @@ class HomeScreen : AppCompatActivity() {
 
     }
 
+    override fun onStop() {
+        super.onStop()
+        Log.i(logCatTag, "in home screen on stop")
+        val sharedPreferences = getSharedPreferences("preference", Context.MODE_PRIVATE)
+        if (!(sharedPreferences.getBoolean(sharedPreferenceName, false))) {
+            currentUser = auth.currentUser
+            auth.signOut()
+            Log.i(logCatTag, "signed out")
+        }
+    }
+
+    override fun onStart() {
+        val logOutIntent = Intent(this, LoginScreen::class.java)
+        super.onStart()
+        Log.i(logCatTag, "in home on start")
+        currentUser = auth.currentUser
+        if (currentUser == null)
+        startActivity(logOutIntent)
+    }
+
     private fun populateList(): ArrayList<friend> {
         val list = ArrayList<friend>()
 
-        //list of images for friends pfps
+        //list of images for friends profile pictures
         val myImageList = arrayOf(R.drawable.photo, R.drawable.photo, R.drawable.photo,
             R.drawable.photo, R.drawable.photo, R.drawable.photo,
             R.drawable.photo, R.drawable.photo, R.drawable.photo)
@@ -54,7 +83,7 @@ class HomeScreen : AppCompatActivity() {
             list.add(imageModel)
 
         }
-        list.sortBy {list -> list.username}
+        list.sortBy {list: friend -> list.username}
         return list
     }
 
@@ -76,6 +105,13 @@ class HomeScreen : AppCompatActivity() {
             R.id.settingsAction -> {
                 val settingsIntent = Intent(this, SettingsScreen::class.java)
                 startActivity(settingsIntent)
+            }
+            R.id.logOffAction -> {
+                val logOutIntent = Intent(this, LoginScreen::class.java)
+                currentUser = auth.currentUser
+                auth.signOut()
+                Log.i(logCatTag, "signed out")
+                startActivity(logOutIntent)
             }
         }
         return super.onOptionsItemSelected(item)

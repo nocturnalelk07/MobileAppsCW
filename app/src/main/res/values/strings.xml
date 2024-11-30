@@ -10,7 +10,7 @@
     <string name="last_question">Here is your previous question</string>
 
 
-    <!-- login screen strings -->
+    <!-- login and register screen strings -->
     <string name="login">Please Sign In</string>
     <string name="log_in_here">If you have an account, Sign in here: </string>
     <string name="username_here">Username: </string>
@@ -20,9 +20,11 @@
     <string name="log_in_button">SIGN IN</string>
     <string name="checkbox_stay_signed_in">Remember me?</string>
     <string name="create_account_here">otherwise, please create an account here: </string>
-    <string name="create_account_button">CREATE ACCOUNT</string>
+    <string name="create_account_button">REGISTER</string>
     <string name="two_factor_auth_button">TWO FACTOR AUTHENTICATION</string>
-
+    <string name="register_failed">registration failed, do you already have an account?</string>
+    <string name="login_failed">login failed, did you input the correct details?</string>
+    <string name="go_to_account_register_button">ACCOUNT CREATION</string>
 
     <!-- account screen strings -->
     <string name="account">Account</string>
