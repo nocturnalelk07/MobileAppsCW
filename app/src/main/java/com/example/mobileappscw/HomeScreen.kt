@@ -58,8 +58,9 @@ class HomeScreen : AppCompatActivity() {
         super.onStart()
         Log.i(logCatTag, "in home on start")
         currentUser = auth.currentUser
-        if (currentUser == null)
-        startActivity(logOutIntent)
+        if (currentUser == null) {
+            startActivity(logOutIntent)
+        }
     }
 
     private fun populateList(): ArrayList<friend> {
@@ -94,11 +95,12 @@ class HomeScreen : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val toolbar = findViewById<View>(R.id.homeToolbar)
+        currentUser = auth.currentUser
         when (item.itemId) {
             //this is just an example snack bar
             R.id.profilePicture -> {
                 val snackbar =
-                    Snackbar.make(toolbar, "profile was pressed",0)
+                    Snackbar.make(toolbar, currentUser!!.displayName.toString(),0)
                 snackbar.show()
                 return true
             }
