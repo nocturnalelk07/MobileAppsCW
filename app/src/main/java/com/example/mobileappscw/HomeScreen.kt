@@ -7,11 +7,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeScreen : AppCompatActivity() {
@@ -40,13 +40,19 @@ class HomeScreen : AppCompatActivity() {
         val adapter = MyAdapter(listOfFriends)
         recyclerView.adapter = adapter
 
+        val previousQuestionButton = findViewById<Button>(R.id.previousQuestionButton)
+        previousQuestionButton.setOnClickListener{
+            val quizIntent = Intent(this, QuizScreen::class.java)
+            startActivity(quizIntent)
+        }
     }
 
     override fun onStop() {
         super.onStop()
         Log.i(logCatTag, "in home screen on stop")
         val sharedPreferences = getSharedPreferences("preference", Context.MODE_PRIVATE)
-        if (!(sharedPreferences.getBoolean(sharedPreferenceName, false))) {
+        val canLogOff = getSharedPreferences("moving", Context.MODE_PRIVATE)
+        if (!(sharedPreferences.getBoolean(sharedPreferenceName, false)) && canLogOff.getBoolean("canLogOff", false)) {
             currentUser = auth.currentUser
             auth.signOut()
             Log.i(logCatTag, "signed out")
@@ -99,10 +105,12 @@ class HomeScreen : AppCompatActivity() {
         when (item.itemId) {
             //this is just an example snack bar
             R.id.profilePicture -> {
-                val snackbar =
-                    Snackbar.make(toolbar, currentUser!!.displayName.toString(),0)
-                snackbar.show()
-                return true
+                val accountIntent = Intent(this, AccountScreen::class.java)
+                val sharedPreferenceMoving = getSharedPreferences("moving", Context.MODE_PRIVATE)
+                val editor = sharedPreferenceMoving.edit()
+                editor.putBoolean("allowLogOff", false)
+                editor.apply()
+                startActivity(accountIntent)
             }
             R.id.settingsAction -> {
                 val settingsIntent = Intent(this, SettingsScreen::class.java)
