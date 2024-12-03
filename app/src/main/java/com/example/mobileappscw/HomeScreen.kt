@@ -16,12 +16,13 @@ import com.google.firebase.auth.FirebaseAuth
 
 class HomeScreen : AppCompatActivity() {
 
-    private val sharedPreferenceName = "remember me"
     private val logCatTag = "cwTag"
+
     private val auth = FirebaseAuth.getInstance()
     private var currentUser = auth.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(logCatTag, "in on create home screen")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_screen)
 
@@ -50,13 +51,6 @@ class HomeScreen : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.i(logCatTag, "in home screen on stop")
-        val sharedPreferences = getSharedPreferences("preference", Context.MODE_PRIVATE)
-        val canLogOff = getSharedPreferences("moving", Context.MODE_PRIVATE)
-        if (!(sharedPreferences.getBoolean(sharedPreferenceName, false)) && canLogOff.getBoolean("canLogOff", false)) {
-            currentUser = auth.currentUser
-            auth.signOut()
-            Log.i(logCatTag, "signed out")
-        }
     }
 
     override fun onStart() {
@@ -103,13 +97,8 @@ class HomeScreen : AppCompatActivity() {
         val toolbar = findViewById<View>(R.id.homeToolbar)
         currentUser = auth.currentUser
         when (item.itemId) {
-            //this is just an example snack bar
             R.id.profilePicture -> {
                 val accountIntent = Intent(this, AccountScreen::class.java)
-                val sharedPreferenceMoving = getSharedPreferences("moving", Context.MODE_PRIVATE)
-                val editor = sharedPreferenceMoving.edit()
-                editor.putBoolean("allowLogOff", false)
-                editor.apply()
                 startActivity(accountIntent)
             }
             R.id.settingsAction -> {

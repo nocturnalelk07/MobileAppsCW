@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun launchHomeActivity() {
+        //sign in the user
+
+        //go to the home screen
         val homeIntent = Intent(this, HomeScreen::class.java)
         startActivity(homeIntent)
     }

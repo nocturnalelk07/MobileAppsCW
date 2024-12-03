@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -15,10 +14,10 @@ import com.google.firebase.auth.FirebaseAuth
 
 class LoginScreen : AppCompatActivity() {
 
-    private val sharedPreferenceName = "remember me"
     private val auth = FirebaseAuth.getInstance()
 
     private lateinit var homeIntent: Intent
+
     private var logCatTag = "cwTag"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,21 +38,15 @@ class LoginScreen : AppCompatActivity() {
         //takes the sign in input from the relevant fields
         val emailButton = findViewById<TextInputEditText>(R.id.loginEmailField)
         val password = findViewById<TextInputEditText>(R.id.loginPasswordField).text.toString()
-        val rememberMe = findViewById<CheckBox>(R.id.rememberMe).isChecked
-        val sharedPreferences = getSharedPreferences( "preference",Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
 
-
-        //findViewById<TextInputEditText>(R.id.loginUsernameField).setHint(rememberMe.toString())
+        Log.i(logCatTag, "about to sign in")
         //now we will check this data with the database and log them in if it is correct
             auth.signInWithEmailAndPassword(
                 emailButton.text.toString(), password
             ).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     closeKeyBoard()
-                    //save remember me value
-                    editor.putBoolean(sharedPreferenceName, rememberMe)
-                    editor.apply()
+                    Log.i(logCatTag, "about to launch activity")
                     startActivity(homeIntent)
                 } else {
                     closeKeyBoard()
