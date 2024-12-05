@@ -5,16 +5,17 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class QuizScreen : AppCompatActivity() {
+class AlarmScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.quiz_screen)
+        setContentView(R.layout.alarm_screen)
+
 
 
 
         lateinit var navBarIntent: Intent
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar_quiz)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar_alarm)
         bottomNavigationView.setOnItemReselectedListener() {
             when (it.itemId) {
                 R.id.homeButton -> navBarIntent = Intent(this, HomeScreen::class.java)

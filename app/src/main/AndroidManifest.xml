@@ -11,8 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MobileAppsCW"
-        tools:targetApi="31">
+        android:theme="@style/Theme.MobileAppsCW">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -36,6 +35,9 @@
             android:parentActivityName=".HomeScreen"/>
         <activity
             android:name=".SettingsScreen"
+            android:parentActivityName=".HomeScreen"/>
+        <activity
+            android:name=".AlarmScreen"
             android:parentActivityName=".HomeScreen"/>
     </application>
 </manifest>

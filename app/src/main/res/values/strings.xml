@@ -2,7 +2,7 @@
     <!-- home screen strings -->
     <string name="app_name">MobileAppsCW</string>
     <string name="home">Home</string>
-    <string name="time">12:35:14</string>
+    <string name="time">%1$s:%2$s:%3$s</string>
     <string name="remaining_time">Remaining until next question</string>
     <string name="example_question">IN WHAT YEAR DID ROOSEVELT BECOME PRESIDENT?</string>
     <string name="friends_list">Friends:</string>
@@ -12,6 +12,7 @@
 
     <!-- login and register screen strings -->
     <string name="login">Please Sign In</string>
+    <string name="register">Please Register</string>
     <string name="log_in_here">If you have an account, Sign in here: </string>
     <string name="username_here">Username: </string>
     <string name="password_here">Password: </string>
@@ -28,14 +29,19 @@
 
     <!-- account screen strings -->
     <string name="account">Account</string>
-    <string name="add_friend">Add a friend: </string>
+    <string name="add_friend">Add a friend by email: </string>
     <string name="edit">EDIT</string>
     <string name="security_settings">Security settings: </string>
     <string name="example_email">email@example.com</string>
     <string name="manage_email_password_button">MANAGE YOUR EMAIL AND PASSWORD</string>
-    <string name="delete_button">DELETE</string>
+    <string name="delete_button">DELETE ACCOUNT</string>
+    <string name="see_account_button">SEE YOUR PROFILE</string>
+    <string name="customise_profile_button">CUSTOMISE YOUR PROFILE</string>
 
     <!-- app bar menu -->
     <string name="log_out">log out</string>
     <string name="settings">settings</string>
+    <string name="alarm">alarm</string>
+    <string name="profile">profile</string>
+    <string name="quiz">quiz</string>
 </resources>

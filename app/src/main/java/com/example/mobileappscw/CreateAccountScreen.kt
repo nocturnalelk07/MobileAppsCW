@@ -2,6 +2,7 @@ package com.example.mobileappscw
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.userProfileChangeRequest
+
 
 class CreateAccountScreen : AppCompatActivity() {
 
@@ -67,6 +69,9 @@ class CreateAccountScreen : AppCompatActivity() {
                 currentUser = auth.currentUser
                 val profileUpdates = userProfileChangeRequest {
                     displayName = username
+                    Log.i(logCatTag, "adding image")
+                    val uri = Uri.parse("android.resource://MobileAppsCW/drawable/photo")
+                    photoUri = uri
                     //add profile picture here later
                 }
                 currentUser!!.updateProfile(profileUpdates).addOnCompleteListener() {task ->

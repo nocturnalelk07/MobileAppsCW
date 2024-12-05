@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_screen_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/AccountText"
-            style="@style/TextAppearance.MaterialComponents.Headline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="50dp"
-            android:text="@string/account"
-            android:textColor="?attr/colorOnBackground"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.228" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/profileImage"
@@ -47,6 +24,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/pfpButton"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginEnd="10dp"
@@ -58,69 +36,53 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileImage"
             app:layout_constraintVertical_bias="0.0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/friendRequestInputField"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
-        android:hint="@string/add_friend"
-        android:textColor="@color/lightGrey"
-        android:textColorHint="@color/lightGrey"
-        android:textSize="20sp"
         android:background="@drawable/rounded_corners"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:hint="@string/add_friend"
         android:paddingStart="5dp"
-        android:paddingEnd="5dp"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/securitySettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/security_settings"
-        style="@style/TextAppearance.MaterialComponents.Headline3"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/lightGrey"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/exampleEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/example_email"
-        style="@style/TextAppearance.MaterialComponents.Headline4"
-        android:textColor="@color/lightGrey"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="10dp"/>
+        android:paddingEnd="5dp"
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnBackground"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pfpButton" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/accountSettingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/manage_email_password_button"
-        android:textSize="15sp"
-        android:textColor="?attr/colorOnPrimary"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="10dp"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/twoFactorAuthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/two_factor_auth_button"
-        android:textSize="17sp"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="70dp"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/deleteButton"
+        android:id="@+id/customiseProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/delete_button"
-        android:textSize="40sp"
-        android:textColor="?attr/colorOnPrimary"/>
+        android:text="@string/customise_profile_button"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friendRequestInputField" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/see_account_button"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customiseProfileButton" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar_account"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_bar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

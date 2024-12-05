@@ -11,11 +11,4 @@
         android:id="@+id/logOffAction"
         android:title="@string/log_out">
     </item>
-    <item
-        android:id="@+id/settingsAction"
-        android:title="@string/settings">
-    </item>
-
-
-
 </menu>

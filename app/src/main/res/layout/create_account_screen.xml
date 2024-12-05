@@ -10,9 +10,9 @@
         android:id="@+id/loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/register"
         android:layout_gravity="center_horizontal"
-        style="@style/TextAppearance.MaterialComponents.Headline2"
+        style="@style/TextAppearance.MaterialComponents.Headline3"
         android:textStyle="bold"
         android:textColor="?attr/colorOnBackground"
         android:layout_marginBottom="50dp"/>
