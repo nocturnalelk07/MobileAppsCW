@@ -3,6 +3,7 @@ package com.example.mobileappscw
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +18,7 @@ class AccountScreen : AppCompatActivity() {
         setContentView(R.layout.account_screen)
 
         //the button for changing profile picture
-        val pfpButton = findViewById<Button>(R.id.pfpButton)
+        val pfpButton = findViewById<ImageButton>(R.id.pfpButton)
         pfpButton.setOnClickListener{_ -> changePfp()}
 
 

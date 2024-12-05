@@ -2,41 +2,43 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_screen_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/profileImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginEnd="10dp"
-            android:contentDescription="@string/userPFP"
-            android:scaleType="fitCenter"
-            android:src="@drawable/photo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.99"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/accountToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:title="TriviaLe - Account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="?attr/colorOnPrimary"
+        android:background="?attr/colorPrimary"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/pfpButton"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/edit"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.99"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileImage"
-            app:layout_constraintVertical_bias="0.0" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/userPFP"
+        android:scaleType="fitCenter"
+        android:src="@drawable/photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/accountToolbar" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/pfpButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/pfp_button_context"
+        android:src="@drawable/change_pfp"
+        app:layout_constraintEnd_toStartOf="@+id/profileImage"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/friendRequestInputField"
@@ -50,10 +52,10 @@
         android:textColor="?attr/colorOnBackground"
         android:textColorHint="?attr/colorOnBackground"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/customiseProfileButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pfpButton" />
+        app:layout_constraintTop_toBottomOf="@+id/accountToolbar" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/customiseProfileButton"
@@ -62,20 +64,22 @@
         android:layout_gravity="center"
         android:text="@string/customise_profile_button"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/materialButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friendRequestInputField" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/see_account_button"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customiseProfileButton" />
+        app:layout_constraintTop_toBottomOf="@+id/accountToolbar" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar_account"

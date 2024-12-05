@@ -30,7 +30,7 @@
     <!-- account screen strings -->
     <string name="account">Account</string>
     <string name="add_friend">Add a friend by email: </string>
-    <string name="edit">EDIT</string>
+    <string name="edit_button">EDIT</string>
     <string name="security_settings">Security settings: </string>
     <string name="example_email">email@example.com</string>
     <string name="manage_email_password_button">MANAGE YOUR EMAIL AND PASSWORD</string>
@@ -44,4 +44,8 @@
     <string name="alarm">alarm</string>
     <string name="profile">profile</string>
     <string name="quiz">quiz</string>
+
+
+    <!-- accessability -->
+    <string name="pfp_button_context">this is for you to change your profile picture</string>
 </resources>
