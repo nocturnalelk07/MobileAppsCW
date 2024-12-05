@@ -13,7 +13,6 @@ class AlarmScreen : AppCompatActivity() {
 
 
 
-
         lateinit var navBarIntent: Intent
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar_alarm)
         bottomNavigationView.setOnItemReselectedListener() {

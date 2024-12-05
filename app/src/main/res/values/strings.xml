@@ -37,6 +37,7 @@
     <string name="delete_button">DELETE ACCOUNT</string>
     <string name="see_account_button">SEE YOUR PROFILE</string>
     <string name="customise_profile_button">CUSTOMISE YOUR PROFILE</string>
+    <string name="add_friend_button">ADD FRIEND</string>
 
     <!-- app bar menu -->
     <string name="log_out">log out</string>
@@ -44,6 +45,9 @@
     <string name="alarm">alarm</string>
     <string name="profile">profile</string>
     <string name="quiz">quiz</string>
+
+    <!-- alarm screen -->
+    <string name="current_alarm">this is your current alarm:</string>
 
 
     <!-- accessability -->
