@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -39,5 +40,8 @@
         <activity
             android:name=".AlarmScreen"
             android:parentActivityName=".HomeScreen"/>
+
+
+        <receiver android:name=".AlarmReceiver" />
     </application>
 </manifest>

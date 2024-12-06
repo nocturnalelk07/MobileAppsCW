@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- home screen strings -->
     <string name="app_name">MobileAppsCW</string>
     <string name="home">Home</string>
@@ -48,6 +48,10 @@
 
     <!-- alarm screen -->
     <string name="current_alarm">this is your current alarm:</string>
+    <string name="set_alarm">use the clock then set your alarm here</string>
+    <string name="create_alarm_button">CREATE ALARM</string>
+    <string name="alarm_on">ALARM ON</string>
+    <string name="cancel_button" tools:ignore="ButtonCase">CANCEL</string>
 
 
     <!-- accessability -->
