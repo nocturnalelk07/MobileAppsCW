@@ -15,8 +15,7 @@ class AlarmReceiver: BroadcastReceiver() {
         val message = intent?.getStringExtra("EXTRA_MESSAGE") ?: return
 
         //we want to call the alarm again when it finishes so that it repeats
-        //val repeatTime = LocalDateTime.now().plusHours(24)
-        val repeatTime = LocalDateTime.now().plusSeconds(24)
+        val repeatTime = LocalDateTime.now().plusHours(24)
         val alarmItem = AlarmItem(repeatTime, message)
         context?.let { AndroidAlarmScheduler(it) }?.schedule(alarmItem)
 
