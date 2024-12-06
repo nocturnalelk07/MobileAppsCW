@@ -1,16 +1,12 @@
 package com.example.mobileappscw
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.util.Log
-import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -34,9 +30,12 @@ class AlarmScreen : AppCompatActivity() {
         scheduler = AndroidAlarmScheduler(this)
         mySharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
         editor = mySharedPreferences.edit()
+        //temporary time to pass into the alarmItem
         alarmSetTime = LocalDateTime.now()
         alarmItem = AlarmItem(alarmSetTime, "test306")
         timePicker = findViewById(R.id.timePicker)
+        updateShownAlarm(mySharedPreferences.getInt("alarm_hour", 0).toString(),
+            mySharedPreferences.getInt("alarm_min", 0).toString())
         val alarmButton = findViewById<Button>(R.id.createAlarmButton)
         alarmButton.setOnClickListener{_ -> createAlarm()}
 
@@ -65,9 +64,13 @@ class AlarmScreen : AppCompatActivity() {
         alarmItem.let(scheduler::schedule)
 
         //here we make the time set into a string to store for our own use
-        val alarmTimeString = alarmItem.alarmTime.toString()
-        editor.putString("alarm_time", alarmTimeString)
+        val alarmTimeHour = alarmItem.alarmTime.hour
+        val alarmTimeMin = alarmItem.alarmTime.minute
+        editor.putInt("alarm_hour", alarmTimeHour)
         editor.apply()
+        editor.putInt("alarm_min", alarmTimeMin)
+        editor.apply()
+        updateShownAlarm(alarmTimeHour.toString(), alarmTimeMin.toString())
         //Log.i("test306", mySharedPreferences.getString("alarm_time", "default").toString())
     }
     private fun cancelAlarm() {
@@ -82,5 +85,10 @@ class AlarmScreen : AppCompatActivity() {
             timePicker.hour, timePicker.minute)
 
         alarmItem.setTime(newTime)
+    }
+
+    private fun updateShownAlarm(hour : String, min : String) {
+        val text = findViewById<TextView>(R.id.currentAlarm)
+        text.text = String.format(getString(R.string.current_alarm,), hour, min)
     }
 }

@@ -47,7 +47,7 @@
     <string name="quiz">quiz</string>
 
     <!-- alarm screen -->
-    <string name="current_alarm">this is your current alarm:</string>
+    <string name="current_alarm">current alarm: %1$s : %2$s</string>
     <string name="set_alarm">use the clock then set your alarm here</string>
     <string name="create_alarm_button">CREATE ALARM</string>
     <string name="alarm_on">ALARM ON</string>
