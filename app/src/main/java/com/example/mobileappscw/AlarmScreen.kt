@@ -2,8 +2,12 @@ package com.example.mobileappscw
 
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -19,14 +23,17 @@ class AlarmScreen : AppCompatActivity() {
     private lateinit var alarmSetTime: LocalDateTime
     private lateinit var scheduler: AndroidAlarmScheduler
     private lateinit var alarmItem: AlarmItem
+    private lateinit var mySharedPreferences: SharedPreferences
+    private lateinit var editor: Editor
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //Log.i("test306", "in on create")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.alarm_screen)
 
         scheduler = AndroidAlarmScheduler(this)
-
+        mySharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
+        editor = mySharedPreferences.edit()
         alarmSetTime = LocalDateTime.now()
         alarmItem = AlarmItem(alarmSetTime, "test306")
         timePicker = findViewById(R.id.timePicker)
@@ -51,8 +58,17 @@ class AlarmScreen : AppCompatActivity() {
     }
 
     private fun createAlarm() {
-        updateTime()
+        //there should only be one alarm at a time so this cancels the possibly existing alarm before making a new one
+        //cancelling the alarm also calls to update the time
+        cancelAlarm()
+        //here we schedule a new alarm
         alarmItem.let(scheduler::schedule)
+
+        //here we make the time set into a string to store for our own use
+        val alarmTimeString = alarmItem.alarmTime.toString()
+        editor.putString("alarm_time", alarmTimeString)
+        editor.apply()
+        //Log.i("test306", mySharedPreferences.getString("alarm_time", "default").toString())
     }
     private fun cancelAlarm() {
         updateTime()
