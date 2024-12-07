@@ -2,16 +2,44 @@ package com.example.mobileappscw
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mobileappscw.database.SqliteDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class SettingsScreen : AppCompatActivity() {
 
+    private lateinit var difficultyText : TextView
+    private lateinit var countText : TextView
+    private lateinit var typeText : TextView
+    private lateinit var categoryText : TextView
+    private lateinit var db : SqliteDatabase
+
+    private val auth = FirebaseAuth.getInstance()
+    private var currentUser = auth.currentUser
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_screen)
+        currentUser = auth.currentUser
+        db = SqliteDatabase(this)
+        val userPreferences = db.findUserPrefs(currentUser!!.email.toString())
+        difficultyText = findViewById(R.id.currentDifficultySettingsText)
+        val difficultyPref = userPreferences!!.difficulty
+        countText = findViewById(R.id.currentCountSettingsText)
+        val countPref = userPreferences.count
+        typeText = findViewById(R.id.currentTypeSettingsText)
+        val typePref = userPreferences.type
+        categoryText = findViewById(R.id.currentCategorySettingsText)
+        val categoryPref = userPreferences.category
+
+        difficultyText.text = String.format(getString(R.string.question_difficulty), difficultyPref)
+        countText.text = String.format(getString(R.string.count_pref), countPref)
+        typeText.text = String.format(getString(R.string.question_type), typePref)
+        categoryText.text = String.format(getString(R.string.question_categories), categoryPref)
 
         lateinit var navBarIntent: Intent
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar_settings)

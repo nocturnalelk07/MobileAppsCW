@@ -10,10 +10,11 @@
     <string name="last_question">Here is your previous question</string>
 
     <!-- quiz screen strings -->
-    <string name="question_difficulty">your selected difficulty is: %1$s</string>
-    <string name="question_count">this is question %1$i of %2$i</string>
-    <string name="question_type">your questions are: %1$s</string>
-    <string name="question_categories">your selected category is: %1$s</string>
+    <string name="question_difficulty">your selected difficulty is %1$s</string>
+    <string name="question_count">this is question %1$s of %2$s</string>
+    <string name="count_pref">you are getting %1$s questions</string>
+    <string name="question_type">your questions are %1$s</string>
+    <string name="question_categories">your selected category is %1$s</string>
     <string name="current_question">current question: </string>
 
     <!-- login and register screen strings -->

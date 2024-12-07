@@ -169,7 +169,6 @@ class HomeScreen : AppCompatActivity() {
         //works out how long until the next question should be released
         val currentTime = LocalDateTime.now()
         val alarmHour = mySharedPreferences.getInt("alarm_hour", currentTime.hour)
-        Log.i("test306", alarmHour.toString())
         val alarmMin = mySharedPreferences.getInt("alarm_min", currentTime.minute)
         var alarmTime = LocalDateTime.of(currentTime.year, currentTime.month, currentTime.dayOfMonth.plus(1),
             alarmHour, alarmMin)

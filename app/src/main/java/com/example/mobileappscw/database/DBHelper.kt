@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.mobileappscw.UserPreferences
 import com.google.firebase.auth.FirebaseAuth
 
@@ -16,7 +17,7 @@ class SqliteDatabase(context: Context) :
     override fun onCreate(db: SQLiteDatabase) {
         //sets default preferences for new users
         val createPrefsTable =
-            "CREATE	TABLE $TABLE_USER_PREFERENCES($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,$COLUMN_USER_EMAIL TEXT PRIMARY KEY," +
+            "CREATE	TABLE $TABLE_USER_PREFERENCES($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,$COLUMN_USER_EMAIL TEXT ," +
                     " $COLUMN_PREFS_DIFFICULTY TEXT DEFAULT 'easy', $COLUMN_PREFS_COUNT TEXT DEFAULT '10', " +
                     "$COLUMN_PREFS_TYPE TEXT DEFAULT 'multiple choice', $COLUMN_PREFS_CATEGORY TEXT DEFAULT 'any category')"
         db.execSQL(createPrefsTable)
@@ -120,17 +121,24 @@ class SqliteDatabase(context: Context) :
     }
 */
     fun findUserPrefs(email: String): UserPreferences? {
+        Log.i("test306", "in find prefs")
         val query = "Select * FROM $TABLE_USER_PREFERENCES WHERE $COLUMN_USER_EMAIL = email"
         val db = this.writableDatabase
         var mUserPref: UserPreferences? = null
         val cursor = db.rawQuery(query, null)
         if (cursor.moveToFirst()) {
             val id = Integer.parseInt(cursor.getString(0))
+            Log.i("test306", id.toString())
             val uEmail = cursor.getString(1)
+            Log.i("test306", uEmail.toString())
             val uDifficulty = cursor.getString(2)
+            Log.i("test306", uDifficulty.toString())
             val uCount = cursor.getString(3)
+            Log.i("test306", uCount.toString())
             val uType = cursor.getString(4)
+            Log.i("test306", uType.toString())
             val uCategory = cursor.getString(5)
+            Log.i("test306", uCategory.toString())
             mUserPref = UserPreferences(uEmail, uDifficulty, uCount, uType, uCategory)
         }
         cursor.close()

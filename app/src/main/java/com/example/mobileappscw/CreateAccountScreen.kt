@@ -19,7 +19,7 @@ import com.google.firebase.auth.userProfileChangeRequest
 class CreateAccountScreen : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
-    private val db = SqliteDatabase(this)
+    private lateinit var db : SqliteDatabase
 
     private lateinit var homeIntent: Intent
     private var logCatTag = "cwTag"
@@ -29,6 +29,7 @@ class CreateAccountScreen : AppCompatActivity() {
         Log.i(logCatTag, "in on create account screen")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_account_screen)
+        db = SqliteDatabase(this)
         homeIntent = Intent(this, HomeScreen::class.java)
 
         val createAccountButton = findViewById<Button>(R.id.registerButton)
