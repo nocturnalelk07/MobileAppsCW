@@ -58,7 +58,9 @@ class HomeScreen : AppCompatActivity() {
 
         val previousQuestionButton = findViewById<Button>(R.id.previousQuestionButton)
         previousQuestionButton.setOnClickListener{
-            val quizIntent = Intent(this, QuizScreen::class.java)
+            val quizIntent = Intent(this, QuizScreen::class.java).apply {
+                putExtra("PREVIOUS_QUESTION", true)
+            }
             startActivity(quizIntent)
         }
 

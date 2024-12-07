@@ -3,12 +3,18 @@
     <string name="app_name">MobileAppsCW</string>
     <string name="home">Home</string>
     <string name="time">%1$s:%2$s:%3$s</string>
-    <string name="remaining_time">Remaining until next question</string>
+    <string name="remaining_time">Remaining until new questions</string>
     <string name="example_question">IN WHAT YEAR DID ROOSEVELT BECOME PRESIDENT?</string>
     <string name="friends_list">Friends:</string>
     <string name="userPFP">profile picture</string>
     <string name="last_question">Here is your previous question</string>
 
+    <!-- quiz screen strings -->
+    <string name="question_difficulty">your selected difficulty is: %1$s</string>
+    <string name="question_count">this is question %1$i of %2$i</string>
+    <string name="question_type">your questions are: %1$s</string>
+    <string name="question_categories">your selected category is: %1$s</string>
+    <string name="current_question">current question: </string>
 
     <!-- login and register screen strings -->
     <string name="login">Please Sign In</string>
@@ -27,7 +33,7 @@
     <string name="login_failed">login failed, did you input the correct details?</string>
     <string name="go_to_account_register_button">ACCOUNT CREATION</string>
 
-    <!-- account screen strings -->
+    <!-- account and settings screen strings -->
     <string name="account">Account</string>
     <string name="add_friend">Add a friend by email: </string>
     <string name="edit_button">EDIT</string>
@@ -38,6 +44,8 @@
     <string name="see_account_button">SEE YOUR PROFILE</string>
     <string name="customise_profile_button">CUSTOMISE YOUR PROFILE</string>
     <string name="add_friend_button">ADD FRIEND</string>
+    <string name="question_settings">Question Settings: </string>
+    <string name="change_prefs_button">CHANGE PREFERENCES</string>
 
     <!-- app bar menu -->
     <string name="log_out">log out</string>
@@ -54,6 +62,6 @@
     <string name="cancel_button" tools:ignore="ButtonCase">CANCEL</string>
 
 
-    <!-- accessability -->
+    <!-- accessibility -->
     <string name="pfp_button_context">this is for you to change your profile picture</string>
 </resources>

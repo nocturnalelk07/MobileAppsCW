@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,8 +17,104 @@
         android:background="?attr/colorPrimary"/>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/questionSettingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/question_settings"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsToolbar" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/currentCategorySettingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="@string/question_categories"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentTypeSettingsText" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/currentCategorySettingsSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/currentCategorySettingsText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/currentCategorySettingsText" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/changePrefsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_prefs_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentCategorySettingsText" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/currentCountSettingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="@string/question_count"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentDifficultySettingsText" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/currentCountSettingsSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/currentCountSettingsText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/currentCountSettingsText" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/currentTypeSettingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="@string/question_type"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentCountSettingsText" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/currentTypeSettingsSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/currentTypeSettingsText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/currentTypeSettingsText" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/currentDifficultySettingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="@string/question_difficulty"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionSettingsText" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/currentDifficultySettingsSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/currentDifficultySettingsText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/currentDifficultySettingsText" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/securitySettings"
-        style="@style/TextAppearance.MaterialComponents.Headline3"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+//import com.example.mobileappscw.database.SqliteDatabase
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +19,7 @@ import com.google.firebase.auth.userProfileChangeRequest
 class CreateAccountScreen : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
+    //private val db = SqliteDatabase(this)
 
     private lateinit var homeIntent: Intent
     private var logCatTag = "cwTag"
@@ -48,8 +50,8 @@ class CreateAccountScreen : AppCompatActivity() {
             closeKeyBoard()
             makeSnackbar(findViewById(R.id.createUsernameField), getString(R.string.register_failed))
         } else {
-            if(validationPassed(username, password, confirmPassword)) {
-                addToDatabase(email, password, confirmPassword, username)
+            if(validationPassed(password, confirmPassword)) {
+                addToDatabase(email, password, username)
             } else {
                 closeKeyBoard()
                 makeSnackbar(findViewById(R.id.createUsernameField), getString(R.string.register_failed))
@@ -60,7 +62,7 @@ class CreateAccountScreen : AppCompatActivity() {
 
     }
 
-    private fun addToDatabase(email : String, password : String, cPassword: String, username: String) {
+    private fun addToDatabase(email : String, password : String, username: String) {
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, {
             task -> if (task.isSuccessful) {
@@ -79,7 +81,10 @@ class CreateAccountScreen : AppCompatActivity() {
                         Log.i(logCatTag ,"successfully added username")
                     }
                 }
-                startActivity(homeIntent)
+
+            //here we add the users preferences to the sqlLite database
+            //db.addPreferences("easy", "10", "multiple choice", "any category")
+            startActivity(homeIntent)
             }
         })
     }
@@ -92,7 +97,7 @@ class CreateAccountScreen : AppCompatActivity() {
         }
     }
 
-    private fun validationPassed(username: String, password: String, cPassword: String): Boolean {
+    private fun validationPassed(password: String, cPassword: String): Boolean {
         //check password and confirm password are actually the same
         var passed = true
         if(!(password == cPassword)) {

@@ -18,18 +18,8 @@ class AlarmReceiver: BroadcastReceiver() {
             val repeatTime = getNewTime(context)
             val alarmItem = AlarmItem(repeatTime, message)
             AndroidAlarmScheduler(context).schedule(alarmItem)
+            //TODO send a call to the alarm system to go off here with a notification
 
-            //dont think this is needed
-            /*mySharedPreferences = context.getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
-            val editor = mySharedPreferences.edit()
-            val alarmTimeHour = alarmItem.alarmTime.hour
-            val alarmTimeMin = alarmItem.alarmTime.minute
-            editor.putInt("alarm_hour", alarmTimeHour)
-            editor.apply()
-            editor.putInt("alarm_min", alarmTimeMin)
-            editor.apply()*/
-            //Log.i("test306", "showing new string")
-            //Log.i("test306", alarmTimeHour.toString() + alarmTimeMin.toString())
         }
     }
 
