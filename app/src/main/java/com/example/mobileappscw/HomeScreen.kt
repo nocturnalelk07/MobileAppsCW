@@ -1,6 +1,8 @@
 package com.example.mobileappscw
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -16,19 +18,26 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import java.time.Duration
+import java.time.LocalDateTime
 
 class HomeScreen : AppCompatActivity() {
+
+    private lateinit var mySharedPreferences: SharedPreferences
 
     private val logCatTag = "cwTag"
 
     private val auth = FirebaseAuth.getInstance()
     private var currentUser = auth.currentUser
+    private lateinit var editor: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i(logCatTag, "in on create home screen")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_screen)
 
+        mySharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
+        editor = mySharedPreferences.edit()
         //starts the countdown clock for the next question
         setTimeRemaining()
 
@@ -150,9 +159,20 @@ class HomeScreen : AppCompatActivity() {
         }.start()
     }
 
-    private fun calcTimeRemaining(): Int {
+    private fun calcTimeRemaining(): Long {
         //works out how long until the next question should be released
-        //TODO:
-        return 10000000
+        val currentTime = LocalDateTime.now()
+        val alarmHour = mySharedPreferences.getInt("alarm_hour", currentTime.hour)
+        val alarmMin = mySharedPreferences.getInt("alarm_min", currentTime.minute)
+        val day = currentTime.dayOfMonth
+        if(alarmHour< currentTime.hour) {
+            day.plus(1)
+        }
+        val alarmTime = LocalDateTime.of(currentTime.year, currentTime.month, day,
+            alarmHour, alarmMin)
+        val duration = Duration.between(currentTime, alarmTime)
+        val returnValue = duration.toMillis()
+
+        return returnValue
     }
 }
