@@ -26,30 +26,30 @@ class SqliteDatabase(context: Context) :
         db.execSQL("DROP TABLE IF EXISTS $TABLE_USER_PREFERENCES")
         onCreate(db)
     }
-/*
-    fun listTasks(): MutableList<Task> {
-        val sql = "select * from $TABLE_TASKS"
-        val db = this.readableDatabase
-        val storeTasks = arrayListOf<Task>()
-        val cursor = db.rawQuery(sql, null)
-        if (cursor.moveToFirst()) {
-            do {
-                val id = Integer.parseInt(cursor.getString(0))
-                val name = cursor.getString(1)
-                storeTasks.add(Task(id, name))
-            } while (cursor.moveToNext())
+    /*
+        fun listTasks(): MutableList<Task> {
+            val sql = "select * from $TABLE_TASKS"
+            val db = this.readableDatabase
+            val storeTasks = arrayListOf<Task>()
+            val cursor = db.rawQuery(sql, null)
+            if (cursor.moveToFirst()) {
+                do {
+                    val id = Integer.parseInt(cursor.getString(0))
+                    val name = cursor.getString(1)
+                    storeTasks.add(Task(id, name))
+                } while (cursor.moveToNext())
+            }
+            cursor.close()
+            return storeTasks
         }
-        cursor.close()
-        return storeTasks
-    }
 
-    fun addTask(taskName: String) {
-        val values = ContentValues()
-        values.put(COLUMN_TASK_TITLE, taskName)
-        val db = this.writableDatabase
-        db.insert(TABLE_TASKS, null, values)
-    }
-*/
+        fun addTask(taskName: String) {
+            val values = ContentValues()
+            values.put(COLUMN_TASK_TITLE, taskName)
+            val db = this.writableDatabase
+            db.insert(TABLE_TASKS, null, values)
+        }
+    */
     //should be called when user is signed in after creating account
     fun addPreferences(difficulty : String, count : String, type : String, category : String) {
         val values = ContentValues()
@@ -64,12 +64,12 @@ class SqliteDatabase(context: Context) :
         db.insert(TABLE_USER_PREFERENCES, null, values)
     }
 
-/*
-    fun deleteTask(id: Int) {
-        val db = this.writableDatabase
-        db.delete(TABLE_TASKS, "$COLUMN_ID	= ?", arrayOf(id.toString()))
-    }
-*/
+    /*
+        fun deleteTask(id: Int) {
+            val db = this.writableDatabase
+            db.delete(TABLE_TASKS, "$COLUMN_ID	= ?", arrayOf(id.toString()))
+        }
+    */
     //user deletes their own info from the table and firebase
     fun deleteUser() {
         currentUser = auth.currentUser

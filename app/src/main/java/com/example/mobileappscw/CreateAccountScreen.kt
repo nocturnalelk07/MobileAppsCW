@@ -9,7 +9,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-//import com.example.mobileappscw.database.SqliteDatabase
+import com.example.mobileappscw.database.SqliteDatabase
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -19,7 +19,7 @@ import com.google.firebase.auth.userProfileChangeRequest
 class CreateAccountScreen : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
-    //private val db = SqliteDatabase(this)
+    private val db = SqliteDatabase(this)
 
     private lateinit var homeIntent: Intent
     private var logCatTag = "cwTag"
@@ -72,8 +72,8 @@ class CreateAccountScreen : AppCompatActivity() {
                 val profileUpdates = userProfileChangeRequest {
                     displayName = username
                     Log.i(logCatTag, "adding image")
-                    val uri = Uri.parse("android.resource://MobileAppsCW/drawable/photo")
-                    photoUri = uri
+                    //val uri = Uri.parse("android.resource://MobileAppsCW/drawable/photo")
+                    //photoUri = uri
                     //add profile picture here later
                 }
                 currentUser!!.updateProfile(profileUpdates).addOnCompleteListener() {task ->
@@ -81,9 +81,8 @@ class CreateAccountScreen : AppCompatActivity() {
                         Log.i(logCatTag ,"successfully added username")
                     }
                 }
-
             //here we add the users preferences to the sqlLite database
-            //db.addPreferences("easy", "10", "multiple choice", "any category")
+            db.addPreferences("easy", "10", "multiple choice", "any category")
             startActivity(homeIntent)
             }
         })

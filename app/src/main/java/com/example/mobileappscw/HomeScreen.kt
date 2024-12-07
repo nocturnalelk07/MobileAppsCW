@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import java.sql.Time
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.time.Duration
@@ -141,7 +142,10 @@ class HomeScreen : AppCompatActivity() {
     private fun setTimeRemaining() {
         val clock = findViewById<TextView>(R.id.timeRemainingView)
         //this is going to calculate the time in milliseconds until the user gets a new question
-        val timeToNextQ = calcTimeRemaining()
+        var timeToNextQ = calcTimeRemaining()
+        if (timeToNextQ <= 0) {
+            timeToNextQ = 100000.toLong()
+        }
         object : CountDownTimer(timeToNextQ.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val f: NumberFormat = DecimalFormat("00")
@@ -165,16 +169,18 @@ class HomeScreen : AppCompatActivity() {
         //works out how long until the next question should be released
         val currentTime = LocalDateTime.now()
         val alarmHour = mySharedPreferences.getInt("alarm_hour", currentTime.hour)
+        Log.i("test306", alarmHour.toString())
         val alarmMin = mySharedPreferences.getInt("alarm_min", currentTime.minute)
-        val day = currentTime.dayOfMonth
-        if(alarmHour< currentTime.hour) {
-            day.plus(1)
-        }
-        val alarmTime = LocalDateTime.of(currentTime.year, currentTime.month, day,
+        var alarmTime = LocalDateTime.of(currentTime.year, currentTime.month, currentTime.dayOfMonth.plus(1),
             alarmHour, alarmMin)
-        val duration = Duration.between(currentTime, alarmTime)
-        val returnValue = duration.toMillis()
-
+        var duration = Duration.between(currentTime, alarmTime)
+        var returnValue = duration.toMillis()
+        //the alarm may have already happened for today so calculate for tomorrow instead
+        if (returnValue <= 0) {
+            alarmTime.plusHours(24)
+            duration = Duration.between(currentTime, alarmTime)
+            returnValue = duration.toMillis()
+        }
         return returnValue
     }
 }
