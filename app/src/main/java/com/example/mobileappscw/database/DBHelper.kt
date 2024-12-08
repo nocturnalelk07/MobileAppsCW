@@ -2,6 +2,7 @@ package com.example.mobileappscw.database
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
@@ -91,8 +92,92 @@ class SqliteDatabase(context: Context) :
         private const val COLUMN_PREFS_COUNT = "count"
         private const val COLUMN_PREFS_TYPE = "type"
         private const val COLUMN_PREFS_CATEGORY = "category"
+
+        private const val TABLE_CURRENT_USER_QUESTIONS = "questions"
+
+        private const val COLUMN_QUESTION_TEXT = "question_text"
+        private const val COLUMN_QUESTION_ANSWER = "question_answer"
+        private const val COLUMN_WAS_ANSWERED = "answered"
+        private const val COLUMN_CORRECT_ANSWER = "correct"
+        private const val COLUMN_QUESTION_TYPE = "type"
+
+        private const val TABLE_PREVIOUS_USER_QUESTIONS = "previous_questions"
+        //uses all the current questions table columns except has been answered since these are old questions
     }
 
+    fun newCurrentQuestionsTable() {
+        //function to move all the previous days questions and get a fresh table to be called when timer goes off
+
+        //creates the tables we need if they don't exist yet
+        val currentQuestionsTable =
+            "CREATE	TABLE IF NOT EXISTS $TABLE_CURRENT_USER_QUESTIONS($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "$COLUMN_USER_EMAIL TEXT, $COLUMN_QUESTION_TEXT TEXT, $COLUMN_QUESTION_ANSWER TEXT, " +
+                    "$COLUMN_QUESTION_TYPE TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE, $COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
+        val oldQuestionsTable =
+            "CREATE	TABLE IF NOT EXISTS $TABLE_PREVIOUS_USER_QUESTIONS($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "$COLUMN_USER_EMAIL TEXT, $COLUMN_QUESTION_TEXT TEXT, $COLUMN_QUESTION_ANSWER TEXT, " +
+                    "$COLUMN_QUESTION_TYPE TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE, $COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
+
+        //now we move all the current questions into old questions table
+        val moveCurrentQuestions =
+            "INSERT INTO $TABLE_PREVIOUS_USER_QUESTIONS SELECT * FROM $TABLE_CURRENT_USER_QUESTIONS"
+        //here we drop the table so we can make it again to reset it
+        val dropTable =
+            "DROP TABLE $TABLE_CURRENT_USER_QUESTIONS"
+
+        val db = this.writableDatabase
+        //make the tables
+        Log.i("test306", "creating tables")
+        db.execSQL(currentQuestionsTable)
+        db.execSQL(oldQuestionsTable)
+        //move the questions over
+        Log.i("test306", "moving questions")
+        db.execSQL(moveCurrentQuestions)
+        //reset the current questions table
+        Log.i("test306", "resetting table")
+        db.execSQL(dropTable)
+        db.execSQL(currentQuestionsTable)
+    }
+
+    fun getCurrentQuestions() {
+        //get the current questions table
+    }
+
+    fun getOldQuestions() {
+        //get the users previous questions
+    }
+
+    fun answerAQuestion(correct : Boolean) {
+        //boolean param is if the question was correctly answered, update table to reflect
+    }
+
+    fun getQuestionAnswer(id : String) : String {
+        //get a question by its id and return the correct answer for checking
+        Log.i("test306", "in question answer")
+        val query = "Select * FROM $TABLE_CURRENT_USER_QUESTIONS WHERE $COLUMN_ID = 1"
+        Log.i("test306", query)
+        val db = this.writableDatabase
+        var answer: String? = null
+        Log.i("test306", "creating cursor")
+        val cursor = db.rawQuery(query, null)
+        Log.i("test306", "moving to first")
+        if (cursor.moveToFirst()) {
+            Log.i("test306", "getting string")
+            answer = cursor.getString(0)
+        }
+        Log.i("test306", "closing cursor")
+        cursor.close()
+        if (answer == null) {
+            answer = ""
+        }
+        return answer
+
+        //Log.i("test306", "in get question answer")
+        //val query = "Select * FROM $TABLE_CURRENT_USER_QUESTIONS WHERE $COLUMN_ID = id"
+        //val db = this.writableDatabase
+        //var mUserPref: UserPreferences? = null
+        //val cursor = db.rawQuery(query, null)
+    }
     /*
     fun updateTask(task: Task) {
         val values = ContentValues()

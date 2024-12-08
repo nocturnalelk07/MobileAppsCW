@@ -41,7 +41,7 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/currentCategorySettingsSpinner"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,7 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/currentCountSettingsSpinner"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/currentTypeSettingsSpinner"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/currentDifficultySettingsSpinner"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

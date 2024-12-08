@@ -20,8 +20,6 @@ class SettingsScreen : AppCompatActivity() {
     private lateinit var categoryText : TextView
     private lateinit var db : SqliteDatabase
 
-    //the most questions you can get in a single call to trivia api
-    private val maximumApiQuestions = 50
     private val auth = FirebaseAuth.getInstance()
     private var currentUser = auth.currentUser
 
@@ -110,6 +108,9 @@ class SettingsScreen : AppCompatActivity() {
         val changePrefsButton = findViewById<Button>(R.id.changePrefsButton)
         changePrefsButton.setOnClickListener() {_ -> updatePrefs(difficultySpinner.selectedItem.toString(),
             countSpinner.selectedItem.toString(), typeSpinner.selectedItem.toString(), categorySpinner.selectedItem.toString(), db)}
+
+        Log.i("test306", "get question answer")
+        db.getQuestionAnswer("1")
     }
 
     private fun updatePrefs(difficulty : String, count : String, type : String, category : String,

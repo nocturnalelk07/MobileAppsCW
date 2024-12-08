@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Log
+import com.example.mobileappscw.database.SqliteDatabase
 import java.time.LocalDateTime
 
 class AlarmReceiver: BroadcastReceiver() {
@@ -18,6 +19,11 @@ class AlarmReceiver: BroadcastReceiver() {
             val repeatTime = getNewTime(context)
             val alarmItem = AlarmItem(repeatTime, message)
             AndroidAlarmScheduler(context).schedule(alarmItem)
+
+            val db = SqliteDatabase(context)
+            db.newCurrentQuestionsTable()
+            //TODO api call to put new questions in the database for user ... through db?
+
             //TODO send a call to the alarm system to go off here with a notification
 
         }
