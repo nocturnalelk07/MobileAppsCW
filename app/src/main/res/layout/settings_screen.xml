@@ -32,79 +32,80 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:gravity="center"
-        android:layout_marginStart="2dp"
         android:text="@string/question_categories"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="17sp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentTypeSettingsText" />
+        app:layout_constraintTop_toBottomOf="@+id/currentTypeSettingsSpinner" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/currentCategorySettingsSpinner"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/currentCategorySettingsText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/currentCategorySettingsText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentCategorySettingsText" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/changePrefsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/change_prefs_button"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentCategorySettingsText" />
+        app:layout_constraintTop_toBottomOf="@+id/currentCategorySettingsSpinner" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/currentCountSettingsText"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:gravity="center"
-        android:layout_marginStart="2dp"
         android:text="@string/count_pref"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="17sp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentDifficultySettingsText" />
+        app:layout_constraintTop_toBottomOf="@+id/currentDifficultySettingsSpinner" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/currentCountSettingsSpinner"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/currentCountSettingsText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/currentCountSettingsText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentCountSettingsText" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/currentTypeSettingsText"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:gravity="center"
-        android:layout_marginStart="2dp"
         android:text="@string/question_type"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="17sp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentCountSettingsText" />
+        app:layout_constraintTop_toBottomOf="@+id/currentCountSettingsSpinner" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/currentTypeSettingsSpinner"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/currentTypeSettingsText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/currentTypeSettingsText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentTypeSettingsText" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/currentDifficultySettingsText"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:gravity="center"
-        android:layout_marginStart="2dp"
         android:text="@string/question_difficulty"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="17sp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionSettingsText" />
 
@@ -112,58 +113,9 @@
         android:id="@+id/currentDifficultySettingsSpinner"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/currentDifficultySettingsText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/currentDifficultySettingsText" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/securitySettings"
-        style="@style/TextAppearance.MaterialComponents.Headline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/security_settings"
-        android:textColor="?attr/colorOnBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/accountSettingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/manage_email_password_button"
-        android:textColor="?attr/colorOnPrimary"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/twoFactorAuthButton" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/twoFactorAuthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/two_factor_auth_button"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/securitySettings" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/deleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/delete_button"
-        android:textColor="?attr/colorOnPrimary"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountSettingsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/currentDifficultySettingsText" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar_settings"

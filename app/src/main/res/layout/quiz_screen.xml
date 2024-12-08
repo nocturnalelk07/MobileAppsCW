@@ -31,27 +31,27 @@
         app:layout_constraintTop_toBottomOf="@+id/quizToolbar">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/questionDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/question_difficulty"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/questionCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
             android:gravity="center_horizontal"
             android:text="@string/question_count"
             android:textColor="?attr/colorOnSurface"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quizToolbar" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/questionDifficulty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            android:gravity="center_horizontal"
-            android:text="@string/question_difficulty"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="20sp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/questionType"
@@ -100,6 +100,7 @@
             android:textSize="20sp" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/questionText"
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_gravity="center"

@@ -148,6 +148,7 @@ class SqliteDatabase(context: Context) :
     //this should work but cant be tested yet
     //take in user preferences to update in the database for the corresponding user
     fun updatePreferences(email : String, difficulty : String, count : String, type : String, category : String) {
+        Log.i("test306", "in update prefs")
         val values = ContentValues()
         values.put(COLUMN_PREFS_DIFFICULTY, difficulty)
         values.put(COLUMN_PREFS_COUNT, count)
@@ -157,8 +158,7 @@ class SqliteDatabase(context: Context) :
         db.update(
             TABLE_USER_PREFERENCES,
             values,
-            "$COLUMN_USER_EMAIL = ?",
-            arrayOf(email)
-        )
+            "$COLUMN_USER_EMAIL = email",
+            null)
     }
 }
