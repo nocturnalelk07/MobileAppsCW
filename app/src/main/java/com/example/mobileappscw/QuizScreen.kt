@@ -54,6 +54,6 @@ class QuizScreen : AppCompatActivity() {
             startActivity(navBarIntent)
         }
 
-        //
+        
     }
 }

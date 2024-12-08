@@ -68,7 +68,6 @@ class AlarmReceiver: BroadcastReceiver() {
         val resultProcessing = JSONObject(result)
         val resultArray = resultProcessing.getJSONArray("results")
         val arrayDeque : ArrayDeque<Question> = ArrayDeque(resultArray.length())
-        val questionArray : ArrayDeque<Question>
         //iterate over a range since JSONArray doesn't seem to have an iterator for loops
         for (i in 0..<resultArray.length()) {
             val questionJSON = resultArray.getJSONObject(i)

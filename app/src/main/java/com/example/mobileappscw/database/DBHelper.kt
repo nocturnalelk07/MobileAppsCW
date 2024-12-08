@@ -119,9 +119,30 @@ class SqliteDatabase(context: Context) :
         db.execSQL(currentQuestionsTable)
     }
 
-    fun getCurrentQuestions() {
-        //get the current questions table
+    fun getCurrentQuestions() : ArrayDeque<Question>{
+        //get the current questions table as an array dequeue
+        val query = "Select * FROM $TABLE_CURRENT_USER_QUESTIONS"
+        val db = this.writableDatabase
+        val cursor = db.rawQuery(query, null)
+        var questionArray : ArrayDeque<Question> = ArrayDeque()
+        while (cursor.moveToNext()) {
+            //id and email are 0 and 1
+            val text = cursor.getString(2)
+            val answer = cursor.getString(3)
+            val incorrectAnswer1 = cursor.getString(4)
+            val incorrectAnswer2 = cursor.getString(5)
+            val incorrectAnswer3 = cursor.getString(6)
+            val type = cursor.getString(7)
+            val answered = cursor.getString(8)
+            val correct = cursor.getString(9)
 
+            val incorrectAnswerArray : Array<String> = arrayOf(incorrectAnswer1, incorrectAnswer2, incorrectAnswer3)
+            val question = Question(text, answer, incorrectAnswerArray, answered.toBoolean(), correct.toBoolean(), type)
+            questionArray.add(question)
+        }
+        cursor.close()
+
+        return questionArray
     }
 
     fun getOldQuestions() {
@@ -136,20 +157,16 @@ class SqliteDatabase(context: Context) :
 
     fun getQuestionAnswer(id : String) : String {
         //get a question by its id and return the correct answer for checking
-        Log.i("test306", "in question answer")
         val query = "Select * FROM $TABLE_CURRENT_USER_QUESTIONS WHERE $COLUMN_ID = $id"
-        Log.i("test306", query)
         val db = this.writableDatabase
         var answer: String? = null
-        Log.i("test306", "creating cursor")
+
         val cursor = db.rawQuery(query, null)
-        Log.i("test306", "moving to first")
         if (cursor.moveToFirst()) {
-            Log.i("test306", "getting string")
             answer = cursor.getString(0)
         }
-        Log.i("test306", "closing cursor")
         cursor.close()
+
         if (answer == null) {
             answer = ""
         }
