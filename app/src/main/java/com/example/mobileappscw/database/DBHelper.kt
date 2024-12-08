@@ -6,6 +6,7 @@ import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.mobileappscw.Question
 import com.example.mobileappscw.UserPreferences
 import com.google.firebase.auth.FirebaseAuth
 
@@ -28,30 +29,7 @@ class SqliteDatabase(context: Context) :
         db.execSQL("DROP TABLE IF EXISTS $TABLE_USER_PREFERENCES")
         onCreate(db)
     }
-    /*
-        fun listTasks(): MutableList<Task> {
-            val sql = "select * from $TABLE_TASKS"
-            val db = this.readableDatabase
-            val storeTasks = arrayListOf<Task>()
-            val cursor = db.rawQuery(sql, null)
-            if (cursor.moveToFirst()) {
-                do {
-                    val id = Integer.parseInt(cursor.getString(0))
-                    val name = cursor.getString(1)
-                    storeTasks.add(Task(id, name))
-                } while (cursor.moveToNext())
-            }
-            cursor.close()
-            return storeTasks
-        }
 
-        fun addTask(taskName: String) {
-            val values = ContentValues()
-            values.put(COLUMN_TASK_TITLE, taskName)
-            val db = this.writableDatabase
-            db.insert(TABLE_TASKS, null, values)
-        }
-    */
     //should be called when user is signed in after creating account
     fun addPreferences(difficulty : String, count : String, type : String, category : String) {
         val values = ContentValues()
@@ -66,12 +44,6 @@ class SqliteDatabase(context: Context) :
         db.insert(TABLE_USER_PREFERENCES, null, values)
     }
 
-    /*
-        fun deleteTask(id: Int) {
-            val db = this.writableDatabase
-            db.delete(TABLE_TASKS, "$COLUMN_ID	= ?", arrayOf(id.toString()))
-        }
-    */
     //user deletes their own info from the table and firebase
     fun deleteUser() {
         currentUser = auth.currentUser
@@ -97,9 +69,13 @@ class SqliteDatabase(context: Context) :
 
         private const val COLUMN_QUESTION_TEXT = "question_text"
         private const val COLUMN_QUESTION_ANSWER = "question_answer"
+        private const val COLUMN_WRONG_ANSWER_1 = "wrong1"
+        private const val COLUMN_WRONG_ANSWER_2 = "wrong2"
+        private const val COLUMN_WRONG_ANSWER_3 = "wrong3"
+        private const val COLUMN_QUESTION_TYPE = "type"
         private const val COLUMN_WAS_ANSWERED = "answered"
         private const val COLUMN_CORRECT_ANSWER = "correct"
-        private const val COLUMN_QUESTION_TYPE = "type"
+
 
         private const val TABLE_PREVIOUS_USER_QUESTIONS = "previous_questions"
         //uses all the current questions table columns except has been answered since these are old questions
@@ -112,11 +88,15 @@ class SqliteDatabase(context: Context) :
         val currentQuestionsTable =
             "CREATE	TABLE IF NOT EXISTS $TABLE_CURRENT_USER_QUESTIONS($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "$COLUMN_USER_EMAIL TEXT, $COLUMN_QUESTION_TEXT TEXT, $COLUMN_QUESTION_ANSWER TEXT, " +
-                    "$COLUMN_QUESTION_TYPE TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE, $COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
+                    "$COLUMN_WRONG_ANSWER_1 TEXT, $COLUMN_WRONG_ANSWER_2 TEXT, $COLUMN_WRONG_ANSWER_3 TEXT," +
+                    " $COLUMN_QUESTION_TYPE TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE," +
+                    " $COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
         val oldQuestionsTable =
             "CREATE	TABLE IF NOT EXISTS $TABLE_PREVIOUS_USER_QUESTIONS($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "$COLUMN_USER_EMAIL TEXT, $COLUMN_QUESTION_TEXT TEXT, $COLUMN_QUESTION_ANSWER TEXT, " +
-                    "$COLUMN_QUESTION_TYPE TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE, $COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
+                    "$COLUMN_WRONG_ANSWER_1 TEXT, $COLUMN_WRONG_ANSWER_2 TEXT, $COLUMN_WRONG_ANSWER_3 TEXT," +
+                    "$COLUMN_QUESTION_TYPE TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE," +
+                    " $COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
 
         //now we move all the current questions into old questions table
         val moveCurrentQuestions =
@@ -141,20 +121,23 @@ class SqliteDatabase(context: Context) :
 
     fun getCurrentQuestions() {
         //get the current questions table
+
     }
 
     fun getOldQuestions() {
         //get the users previous questions
+
     }
 
-    fun answerAQuestion(correct : Boolean) {
+    fun answerAQuestion(id : String, correct : Boolean) {
         //boolean param is if the question was correctly answered, update table to reflect
+
     }
 
     fun getQuestionAnswer(id : String) : String {
         //get a question by its id and return the correct answer for checking
         Log.i("test306", "in question answer")
-        val query = "Select * FROM $TABLE_CURRENT_USER_QUESTIONS WHERE $COLUMN_ID = 1"
+        val query = "Select * FROM $TABLE_CURRENT_USER_QUESTIONS WHERE $COLUMN_ID = $id"
         Log.i("test306", query)
         val db = this.writableDatabase
         var answer: String? = null
@@ -171,12 +154,29 @@ class SqliteDatabase(context: Context) :
             answer = ""
         }
         return answer
+    }
 
-        //Log.i("test306", "in get question answer")
-        //val query = "Select * FROM $TABLE_CURRENT_USER_QUESTIONS WHERE $COLUMN_ID = id"
-        //val db = this.writableDatabase
-        //var mUserPref: UserPreferences? = null
-        //val cursor = db.rawQuery(query, null)
+    fun addQuestions(questions: ArrayDeque<Question>) {
+        //here we add the questions from the dequeue to the database
+        while (questions.isNotEmpty()) {
+            val question = questions.removeFirst()
+            //format the question and add to db
+            val values = ContentValues()
+            currentUser = auth.currentUser
+            val email = currentUser?.email
+
+            values.put(COLUMN_USER_EMAIL, email)
+            values.put(COLUMN_QUESTION_TEXT, question.text)
+            values.put(COLUMN_QUESTION_ANSWER, question.answer)
+            values.put(COLUMN_WRONG_ANSWER_1, question.incorrectAnswers[0])
+            values.put(COLUMN_WRONG_ANSWER_2, question.incorrectAnswers[1])
+            values.put(COLUMN_WRONG_ANSWER_3, question.incorrectAnswers[2])
+            values.put(COLUMN_QUESTION_TYPE, question.type)
+            values.put(COLUMN_WAS_ANSWERED, false)
+            values.put(COLUMN_CORRECT_ANSWER, false)
+            val db = this.writableDatabase
+            db.insert(TABLE_CURRENT_USER_QUESTIONS, null, values)
+        }
     }
     /*
     fun updateTask(task: Task) {

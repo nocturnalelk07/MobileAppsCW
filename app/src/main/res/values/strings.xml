@@ -67,6 +67,7 @@
     <string name="pfp_button_context">this is for you to change your profile picture</string>
     
     <!-- api call strings (sorry about the question count ik its awful)-->
+    <string name="trivia_API_base_url">https://opentdb.com/api.php?amount=%1$s&amp;category=%2$s&amp;difficulty=%3$s&amp;type=%4$s</string>
     <string-array name="categories">
         <item>Any Category</item>
         <item>General Knowledge</item>
@@ -88,6 +89,11 @@
         <item>Art</item>
         <item>Celebrities</item>
         <item>Animals</item>
+        <item>Vehicles</item>
+        <item>Entertainment: Comics</item>
+        <item>Science: Gadgets</item>
+        <item>Entertainment: Japanese Anime &amp; Manga</item>
+        <item>Entertainment: Cartoon &amp; Animations</item>
     </string-array>
     <string-array name="difficulty">
         <item>Any Difficulty</item>

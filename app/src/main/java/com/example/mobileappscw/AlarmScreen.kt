@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import java.time.LocalDateTime
 
 
@@ -22,6 +23,9 @@ class AlarmScreen : AppCompatActivity() {
     private lateinit var mySharedPreferences: SharedPreferences
     private lateinit var editor: Editor
 
+    private val auth = FirebaseAuth.getInstance()
+    private var currentUser = auth.currentUser
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +36,8 @@ class AlarmScreen : AppCompatActivity() {
         editor = mySharedPreferences.edit()
         //temporary time to pass into the alarmItem
         alarmSetTime = LocalDateTime.now()
-        alarmItem = AlarmItem(alarmSetTime, "test306")
+        currentUser = auth.currentUser
+        alarmItem = AlarmItem(alarmSetTime, currentUser!!.email.toString())
         timePicker = findViewById(R.id.timePicker)
         updateShownAlarm(mySharedPreferences.getInt("alarm_hour", 0).toString(),
             mySharedPreferences.getInt("alarm_min", 0).toString())
