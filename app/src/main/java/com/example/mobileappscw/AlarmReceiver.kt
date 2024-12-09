@@ -24,6 +24,7 @@ class AlarmReceiver: BroadcastReceiver() {
             AndroidAlarmScheduler(context).schedule(alarmItem)
 
             val db = SqliteDatabase(context)
+            //db.dropQuestionTables()
             db.newCurrentQuestionsTable()
             //TODO finish database call
             //call api, make array of questions, pass it into db, helper adds them to db
@@ -86,7 +87,7 @@ class AlarmReceiver: BroadcastReceiver() {
                     incorrectAnswersJSON.getString(count)
             }
             //now we have a question, we can put it in our ArrayDequeue
-            val questionObject = Question(question, correctAnswer, incorrectAnswers, false, false, type)
+            val questionObject = Question(question, correctAnswer, incorrectAnswers, false, false, type, difficulty, category)
             arrayDeque.add(questionObject)
         }
         db.addQuestions(arrayDeque)
@@ -128,6 +129,7 @@ class AlarmReceiver: BroadcastReceiver() {
             categoryString, difficultyString, typeString)
         Log.i("test306", url)
 
-        return url
+        //url for testing
+        return "https://opentdb.com/api.php?amount=4&category=11&difficulty=&type="
     }
 }

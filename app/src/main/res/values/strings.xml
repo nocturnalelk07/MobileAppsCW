@@ -11,11 +11,20 @@
 
     <!-- quiz screen strings -->
     <string name="question_difficulty">your selected difficulty is %1$s</string>
-    <string name="question_count">this is question %1$s of %2$s</string>
     <string name="count_pref">you are getting %1$s questions</string>
     <string name="question_type">your questions are %1$s</string>
     <string name="question_categories">your selected category is %1$s</string>
     <string name="current_question">current question: </string>
+
+    <string name="question_count">this is question %1$s of %2$s</string>
+    <string name="this_question_difficulty">question difficulty: %1$s</string>
+    <string name="this_question_type">question type: %1$s</string>
+    <string name="this_question_category">question category: %1$s</string>
+
+    <string name="submit_question_button">SUBMIT ANSWER</string>
+    <string name="all_questions_complete">You have completed all your questions for today!</string>
+    <string name="correct_answer">correct, well done!</string>
+    <string name="wrong_answer">Sorry, the right answer was %1$s</string>
 
     <!-- login and register screen strings -->
     <string name="login">Please Sign In</string>

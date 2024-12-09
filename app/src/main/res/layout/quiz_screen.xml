@@ -17,9 +17,9 @@
         app:titleTextColor="?attr/colorOnPrimary" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/prefsShown"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         app:cardBackgroundColor="?attr/colorSurface"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/quizToolbar">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/questionDifficulty"
+            android:id="@+id/prefDifficulty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -41,11 +41,69 @@
             android:textSize="20sp" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/questionCount"
+            android:id="@+id/prefCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/question_count"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quizToolbar" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/prefType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:gravity="center_horizontal"
+            android:text="@string/question_type"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/prefCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center_horizontal"
+            android:text="@string/question_categories"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="20sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/prefsForQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prefsShown">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/questionDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/this_question_difficulty"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/questionCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
             android:gravity="center_horizontal"
             android:text="@string/question_count"
             android:textColor="?attr/colorOnSurface"
@@ -58,9 +116,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:gravity="center_horizontal"
-            android:text="@string/question_type"
+            android:text="@string/this_question_type"
             android:textColor="?attr/colorOnSurface"
             android:textSize="20sp" />
 
@@ -68,27 +126,26 @@
             android:id="@+id/questionCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
-            android:text="@string/question_categories"
+            android:text="@string/this_question_category"
             android:textColor="?attr/colorOnSurface"
             android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/questionBox"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         app:cardBackgroundColor="?attr/colorSurface"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar_quiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.33">
+        app:layout_constraintTop_toBottomOf="@+id/prefsForQuestion">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/currentQuestion"
@@ -102,10 +159,28 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/questionText"
             android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:textColor="?attr/colorOnSurface"/>
+            android:layout_height="120dp"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Spinner
+            android:id="@+id/answerSpinner"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center" />
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit_question_button"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionBox" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar_quiz"

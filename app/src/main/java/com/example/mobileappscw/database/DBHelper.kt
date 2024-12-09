@@ -73,8 +73,11 @@ class SqliteDatabase(context: Context) :
         private const val COLUMN_WRONG_ANSWER_2 = "wrong2"
         private const val COLUMN_WRONG_ANSWER_3 = "wrong3"
         private const val COLUMN_QUESTION_TYPE = "type"
+        private const val COLUMN_QUESTION_DIFFICULTY = "difficulty"
+        private const val COLUMN_QUESTION_CATEGORY = "category"
         private const val COLUMN_WAS_ANSWERED = "answered"
         private const val COLUMN_CORRECT_ANSWER = "correct"
+
 
 
         private const val TABLE_PREVIOUS_USER_QUESTIONS = "previous_questions"
@@ -89,14 +92,16 @@ class SqliteDatabase(context: Context) :
             "CREATE	TABLE IF NOT EXISTS $TABLE_CURRENT_USER_QUESTIONS($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "$COLUMN_USER_EMAIL TEXT, $COLUMN_QUESTION_TEXT TEXT, $COLUMN_QUESTION_ANSWER TEXT, " +
                     "$COLUMN_WRONG_ANSWER_1 TEXT, $COLUMN_WRONG_ANSWER_2 TEXT, $COLUMN_WRONG_ANSWER_3 TEXT," +
-                    " $COLUMN_QUESTION_TYPE TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE," +
-                    " $COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
+                    "$COLUMN_QUESTION_TYPE TEXT, $COLUMN_QUESTION_DIFFICULTY TEXT," +
+                    "$COLUMN_QUESTION_CATEGORY TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE," +
+                    "$COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
         val oldQuestionsTable =
             "CREATE	TABLE IF NOT EXISTS $TABLE_PREVIOUS_USER_QUESTIONS($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "$COLUMN_USER_EMAIL TEXT, $COLUMN_QUESTION_TEXT TEXT, $COLUMN_QUESTION_ANSWER TEXT, " +
                     "$COLUMN_WRONG_ANSWER_1 TEXT, $COLUMN_WRONG_ANSWER_2 TEXT, $COLUMN_WRONG_ANSWER_3 TEXT," +
-                    "$COLUMN_QUESTION_TYPE TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE," +
-                    " $COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
+                    "$COLUMN_QUESTION_TYPE TEXT, $COLUMN_QUESTION_DIFFICULTY TEXT," +
+                    "$COLUMN_QUESTION_CATEGORY TEXT, $COLUMN_WAS_ANSWERED TEXT DEFAULT FALSE," +
+                    "$COLUMN_CORRECT_ANSWER TEXT DEFAULT FALSE)"
 
         //now we move all the current questions into old questions table
         val moveCurrentQuestions =
@@ -133,11 +138,13 @@ class SqliteDatabase(context: Context) :
             val incorrectAnswer2 = cursor.getString(5)
             val incorrectAnswer3 = cursor.getString(6)
             val type = cursor.getString(7)
-            val answered = cursor.getString(8)
-            val correct = cursor.getString(9)
+            val difficulty = cursor.getString(8)
+            val category = cursor.getString(9)
+            val answered = cursor.getString(10)
+            val correct = cursor.getString(11)
 
             val incorrectAnswerArray : Array<String> = arrayOf(incorrectAnswer1, incorrectAnswer2, incorrectAnswer3)
-            val question = Question(text, answer, incorrectAnswerArray, answered.toBoolean(), correct.toBoolean(), type)
+            val question = Question(text, answer, incorrectAnswerArray, answered.toBoolean(), correct.toBoolean(), type, difficulty, category)
             questionArray.add(question)
         }
         cursor.close()
@@ -150,9 +157,18 @@ class SqliteDatabase(context: Context) :
 
     }
 
-    fun answerAQuestion(id : String, correct : Boolean) {
+    fun answerAQuestion(correct : Boolean) {
         //boolean param is if the question was correctly answered, update table to reflect
 
+    }
+
+    fun getQuestionsAnswered(email : String) : Int {
+        val count = 0
+        //this query will get all the answered questions in the current questions table to count them
+        val query = ""
+
+
+        return count
     }
 
     fun getQuestionAnswer(id : String) : String {
@@ -189,11 +205,21 @@ class SqliteDatabase(context: Context) :
             values.put(COLUMN_WRONG_ANSWER_2, question.incorrectAnswers[1])
             values.put(COLUMN_WRONG_ANSWER_3, question.incorrectAnswers[2])
             values.put(COLUMN_QUESTION_TYPE, question.type)
+            values.put(COLUMN_QUESTION_DIFFICULTY, question.difficulty)
+            values.put(COLUMN_QUESTION_CATEGORY, question.category)
             values.put(COLUMN_WAS_ANSWERED, false)
             values.put(COLUMN_CORRECT_ANSWER, false)
             val db = this.writableDatabase
             db.insert(TABLE_CURRENT_USER_QUESTIONS, null, values)
         }
+    }
+
+    fun dropQuestionTables() {
+        val db = this.writableDatabase
+        val dropCurrent = "DROP TABLE $TABLE_CURRENT_USER_QUESTIONS"
+        val dropOld = "DROP TABLE $TABLE_PREVIOUS_USER_QUESTIONS"
+        db.execSQL(dropCurrent)
+        db.execSQL(dropOld)
     }
     /*
     fun updateTask(task: Task) {
