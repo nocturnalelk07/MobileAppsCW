@@ -152,23 +152,9 @@ class SqliteDatabase(context: Context) :
         return questionArray
     }
 
-    fun getOldQuestions() {
-        //get the users previous questions
-
-    }
-
     fun answerAQuestion(correct : Boolean) {
         //boolean param is if the question was correctly answered, update table to reflect
 
-    }
-
-    fun getQuestionsAnswered(email : String) : Int {
-        val count = 0
-        //this query will get all the answered questions in the current questions table to count them
-        val query = ""
-
-
-        return count
     }
 
     fun getQuestionAnswer(id : String) : String {
@@ -221,33 +207,7 @@ class SqliteDatabase(context: Context) :
         db.execSQL(dropCurrent)
         db.execSQL(dropOld)
     }
-    /*
-    fun updateTask(task: Task) {
-        val values = ContentValues()
-        values.put(COLUMN_TASK_TITLE, task.name)
-        val db = this.writableDatabase
-        db.update(
-            TABLE_TASKS,
-            values,
-            "$COLUMN_ID	= ?",
-            arrayOf((task.id).toString())
-        )
-    }
 
-    fun findTask(name: String): Task? {
-        val query = "Select * FROM $TABLE_TASKS WHERE $COLUMN_TASK_TITLE = name"
-        val db = this.writableDatabase
-        var mTask: Task? = null
-        val cursor = db.rawQuery(query, null)
-        if (cursor.moveToFirst()) {
-            val id = Integer.parseInt(cursor.getString(0))
-            val taskName = cursor.getString(1)
-            mTask = Task(id, taskName)
-        }
-        cursor.close()
-        return mTask
-    }
-*/
     fun findUserPrefs(email: String): UserPreferences? {
         Log.i("test306", "in find prefs")
         val query = "Select * FROM $TABLE_USER_PREFERENCES WHERE $COLUMN_USER_EMAIL = email"
