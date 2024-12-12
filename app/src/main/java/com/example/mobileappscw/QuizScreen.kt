@@ -151,7 +151,7 @@ class QuizScreen : AppCompatActivity() {
             wasCorrect = true
         }
         //send answer to the db to update, the database will update the first question that hasn't been answered
-        db.answerAQuestion(wasCorrect)
+        db.answerAQuestion(wasCorrect, currentQuestion)
 
         //tell the user they got it right or wrong
         if (wasCorrect) {

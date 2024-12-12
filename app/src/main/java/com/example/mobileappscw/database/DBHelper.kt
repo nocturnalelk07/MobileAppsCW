@@ -105,21 +105,18 @@ class SqliteDatabase(context: Context) :
 
         //now we move all the current questions into old questions table
         val moveCurrentQuestions =
-            "INSERT INTO $TABLE_PREVIOUS_USER_QUESTIONS SELECT * FROM $TABLE_CURRENT_USER_QUESTIONS"
+            " INSERT INTO $TABLE_PREVIOUS_USER_QUESTIONS SELECT * FROM $TABLE_CURRENT_USER_QUESTIONS"
         //here we drop the table so we can make it again to reset it
         val dropTable =
             "DROP TABLE $TABLE_CURRENT_USER_QUESTIONS"
 
         val db = this.writableDatabase
         //make the tables
-        Log.i("test306", "creating tables")
         db.execSQL(currentQuestionsTable)
         db.execSQL(oldQuestionsTable)
         //move the questions over
-        Log.i("test306", "moving questions")
         db.execSQL(moveCurrentQuestions)
         //reset the current questions table
-        Log.i("test306", "resetting table")
         db.execSQL(dropTable)
         db.execSQL(currentQuestionsTable)
     }
@@ -152,9 +149,16 @@ class SqliteDatabase(context: Context) :
         return questionArray
     }
 
-    fun answerAQuestion(correct : Boolean) {
+    fun answerAQuestion(correct : Boolean, question: Question) {
         //boolean param is if the question was correctly answered, update table to reflect
+        /*
+        val questionText = question.text
+        val query =
+            "$COLUMN_WAS_ANSWERED = TRUE WHERE (SELECT * FROM $TABLE_CURRENT_USER_QUESTIONS WHERE
+             $COLUMN_QUESTION_TEXT = $questionText)"
+        this.writableDatabase.execSQL(query)
 
+         */
     }
 
     fun getQuestionAnswer(id : String) : String {

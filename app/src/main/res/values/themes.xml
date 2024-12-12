@@ -4,7 +4,7 @@
 
         <!-- Original AppCompat attributes. -->
         <item name="colorPrimary">@color/tealPrimary</item>
-        <item name="colorSecondary">@color/amber</item>
+        <item name="colorSecondary">@color/indigo</item>
         <item name="android:colorBackground">@color/lightGrey</item>
         <item name="colorError">@color/red</item>
 

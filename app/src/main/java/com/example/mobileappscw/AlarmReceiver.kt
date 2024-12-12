@@ -24,9 +24,9 @@ class AlarmReceiver: BroadcastReceiver() {
             AndroidAlarmScheduler(context).schedule(alarmItem)
 
             val db = SqliteDatabase(context)
-            //db.dropQuestionTables()
+            db.dropQuestionTables()
             db.newCurrentQuestionsTable()
-            //TODO finish database call
+
             //call api, make array of questions, pass it into db, helper adds them to db
             //using arrayDequeue so i can pop questions as they are entered
             callAPI(context, db)
